@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Daily — Free Badge &amp; Daily Check-in for Agent ID Holders</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>Agent Daily</h1>
+  <p class="tagline">A free daily check-in for Agent ID holders. Mint one soulbound badge, check in every day, build your streak.</p>
+</header>
+
+<main>
+  <section id="wallet-section" class="card">
+    <h2>1. Connect your wallet</h2>
+    <p class="hint">Standard wallet connection only. No QR login, no session stored on any server. Every transaction is confirmed by you in your own wallet.</p>
+    <button id="connectBtn">Connect Wallet</button>
+    <p id="walletInfo" class="mono"></p>
+    <p id="networkWarn" class="warn" style="display:none;">You are not on BSC mainnet (chain 56). Please switch networks in your wallet.</p>
+  </section>
+
+  <section id="status-section" class="card" style="display:none;">
+    <h2>2. Your status</h2>
+    <ul class="status-list">
+      <li>Agent ID: <strong id="agentIdStatus">—</strong></li>
+      <li>Badge: <strong id="badgeStatus">—</strong> <span id="badgeTokenId" class="mono"></span></li>
+      <li>Current streak: <strong id="streak">—</strong> day(s)</li>
+      <li>Total check-ins: <strong id="totalCheckIns">—</strong></li>
+      <li>Last check-in: <strong id="lastCheckIn">—</strong></li>
+      <li>Next check-in in: <strong id="countdown">—</strong></li>
+    </ul>
+    <p id="statusError" class="warn" style="display:none;"></p>
+  </section>
+
+  <section id="action-section" class="card" style="display:none;">
+    <h2>3. Act</h2>
+    <button id="mintBtn" style="display:none;">Mint Badge (free — gas only)</button>
+    <button id="checkInBtn" style="display:none;">Check in today</button>
+    <p id="actionHint" class="hint"></p>
+    <p id="txStatus" class="mono"></p>
+  </section>
+
+  <section id="leaderboard-section" class="card">
+    <h2>Top streaks</h2>
+    <p class="hint">Read live from on-chain <span class="mono">CheckedIn</span> events. Top 10 by current streak.</p>
+    <ol id="leaderboard"><li>Loading…</li></ol>
+    <p id="leaderboardError" class="warn" style="display:none;"></p>
+    <button id="refreshLbBtn">Refresh leaderboard</button>
+  </section>
+
+  <section class="card facts">
+    <h2>Honest facts</h2>
+    <ul>
+      <li>Free — you only pay BSC network gas. No fees, no payments, no token sale.</li>
+      <li>The badge is soulbound: it cannot be transferred to anyone, ever.</li>
+      <li>One badge per Agent ID holder. One check-in per day; missing a day resets your streak to 1.</li>
+      <li>This is not a promise of rewards, returns, or income of any kind.</li>
+      <li>The contract has no admin, no owner, no pause, and no function that can move your funds. It holds no user funds.</li>
+      <li>Contract (BSC mainnet): <span id="contractAddr" class="mono">not deployed yet</span></li>
+      <li><a id="bscscanLink" href="#" target="_blank" rel="noopener">View contract on BscScan</a> (active after deployment)</li>
+      <li><a href="https://github.com/5WanWan/agent-daily" target="_blank" rel="noopener">Source code on GitHub</a> (MIT, open source)</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>Agent Daily — built for the Agent ID Hackathon. Not affiliated with any wallet or chain operator.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
